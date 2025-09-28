@@ -8,6 +8,10 @@ public class ExpressionEvaluator ()
     {
         var postfix = InfixToPostfix(infix);
         return Calculate(postfix);
+
+        //Testing purpose
+        //Console.WriteLine(postfix);
+        //return 0;           
     }
 
     private static string InfixToPostfix(string infix)
@@ -53,6 +57,11 @@ public class ExpressionEvaluator ()
             }
         }
 
+        while (stack.Count > 0)
+        {
+            postfix += stack.Pop();
+        }
+
         return postfix;
 
     }
@@ -65,7 +74,7 @@ public class ExpressionEvaluator ()
         '^' => 4,
         '*' or '/' or '%' => 2,
         '+' or '-' => 1,
-        '(' => 1, 
+        '(' => 5, 
         _ => throw new Exception ("Invalid expression"),
     };
 
@@ -81,8 +90,32 @@ public class ExpressionEvaluator ()
 
     private static double Calculate(string postfix)
     {
-        throw new NotImplementedException();
+        var stack = new Stack<double>();
+
+        foreach (char item in postfix)
+        {
+            if (IsOperator(item))
+            {
+                var op2 = stack.Pop();
+                var op1 = stack.Pop();
+                stack.Push(Calculate(op1, item, op2));
+            }
+            else
+            {
+                stack.Push(Convert.ToDouble(item.ToString()));
+            }
+        }
+
+        return stack.Peek();
     }
 
-
+    private static double Calculate(double op1, char item, double op2) => item switch
+    {
+        '*' => op1 * op2,
+        '/' => op1 / op2,
+        '^' => Math.Pow(op1, op2),
+        '+' => op1 + op2,
+        '-' => op1 - op2,
+        _ => throw new Exception("Invalid expression."),
+    };
 }
