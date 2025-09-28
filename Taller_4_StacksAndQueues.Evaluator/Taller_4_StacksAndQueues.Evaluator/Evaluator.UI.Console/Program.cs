@@ -15,3 +15,8 @@ Console.WriteLine($"{infix2} = {result2}");
 var infix3 = "7^(1/2)";
 var result3 = ExpressionEvaluator.Evaluate(infix3);
 Console.WriteLine($"{infix3} = {result3}");
+
+//Solucionar que no de error con la siguiente expresion
+var infix4 = "123.89^(1.6/2.789)";
+var result4 = ExpressionEvaluator.Evaluate(infix4);
+Console.WriteLine($"{infix4} = {result4}");
