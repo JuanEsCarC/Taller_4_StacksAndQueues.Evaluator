@@ -337,7 +337,7 @@
             Controls.Add(btn7);
             Controls.Add(txtDisplay);
             Name = "Form1";
-            Text = "Funtions Evaluator";
+            Text = "Functions Evaluator";
             ResumeLayout(false);
             PerformLayout();
         }
