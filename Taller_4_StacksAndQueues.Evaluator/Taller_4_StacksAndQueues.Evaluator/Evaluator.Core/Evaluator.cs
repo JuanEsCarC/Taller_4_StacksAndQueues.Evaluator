@@ -6,64 +6,68 @@ public class ExpressionEvaluator ()
 
     public static double Evaluate(string infix)
     {
-        var postfix = InfixToPostfix(infix);
-        return Calculate(postfix);
+        var postfixKeys = InfixToPostfix(infix);
+        return Calculate(postfixKeys);
 
         //Testing purpose
-        //Console.WriteLine(postfix);
+        //Console.WriteLine(postfixKeys);
         //return 0;           
     }
 
-    private static string InfixToPostfix(string infix)
+    private static List<string> InfixToPostfix(string infix)
     {
         var stack = new Stack<char>();
-        var postfix = string.Empty;
-        foreach (char item in infix)
+        var keys = new List<string>();
+        
+        for (int i = 0; i < infix.Length; i++)
         {
-            if (IsOperator(item))
+            char item = infix[i];
+
+            if (char.IsDigit(item) || item == '.')
             {
-                if (item == ')')
+                string number = string.Empty;
+                while (i < infix.Length && (char.IsDigit(infix[i]) || infix[i] == '.'))
                 {
-                    do
-                    {
-                        postfix += stack.Pop();
-                    }
-                    while (stack.Peek() != '(');
-                    stack.Pop();
+                    number += infix[i];
+                    i++;
                 }
-                else
+                i--;
+                keys.Add(number);
+            }
+            else 
+            {
+                if (IsOperator(item))
                 {
-                    if (stack.Count > 0)
+                    if (item == ')')
                     {
-                        if (PriorityInFix(item) > PriorityStack(stack.Peek()))
+                        while (stack.Count > 0 && stack.Peek() != '(')
                         {
-                            stack.Push(item);
+                            keys.Add(stack.Pop().ToString());
                         }
-                        else
+
+                        if (stack.Count > 0 && stack.Peek() == '(')
                         {
-                            postfix += stack.Pop();
-                            stack.Push(item);
+                            stack.Pop();
                         }
                     }
-                    else
+                    else 
                     {
+                        while (stack.Count > 0 && PriorityStack(stack.Peek()) >= PriorityInFix(item))
+                        {
+                            keys.Add(stack.Pop().ToString());
+                        }                   
                         stack.Push(item);
                     }
-                }
-            }
-            else
-            {
-                postfix += item;
+                }   
             }
         }
 
         while (stack.Count > 0)
         {
-            postfix += stack.Pop();
+            keys.Add(stack.Pop().ToString());
         }
 
-        return postfix;
-
+        return keys;
     }
 
     private static bool IsOperator(char item) => item is '+' or '-' or '*' or '/' or '%' or '^' or '(' or ')';
@@ -88,12 +92,14 @@ public class ExpressionEvaluator ()
     };
 
 
-    private static double Calculate(string postfix)
+    private static double Calculate(List<string> postfixKeys)
     {
         var stack = new Stack<double>();
 
-        foreach (char item in postfix)
+        foreach (var key in postfixKeys)
         {
+            char item = key[0];
+            
             if (IsOperator(item))
             {
                 var op2 = stack.Pop();
@@ -102,7 +108,7 @@ public class ExpressionEvaluator ()
             }
             else
             {
-                stack.Push(Convert.ToDouble(item.ToString()));
+                stack.Push(Convert.ToDouble(key.ToString()));
             }
         }
 
