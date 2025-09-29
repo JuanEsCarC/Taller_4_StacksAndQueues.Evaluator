@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            display = new TextBox();
+            txtDisplay = new TextBox();
             btn7 = new Button();
             btn8 = new Button();
             btn9 = new Button();
@@ -52,16 +52,16 @@
             btnDelete = new Button();
             SuspendLayout();
             // 
-            // display
+            // txtDisplay
             // 
-            display.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            display.BackColor = Color.Green;
-            display.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            display.ForeColor = Color.White;
-            display.Location = new Point(12, 13);
-            display.Name = "display";
-            display.Size = new Size(589, 51);
-            display.TabIndex = 0;
+            txtDisplay.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            txtDisplay.BackColor = Color.Green;
+            txtDisplay.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtDisplay.ForeColor = Color.White;
+            txtDisplay.Location = new Point(12, 13);
+            txtDisplay.Name = "txtDisplay";
+            txtDisplay.Size = new Size(573, 51);
+            txtDisplay.TabIndex = 0;
             // 
             // btn7
             // 
@@ -72,6 +72,7 @@
             btn7.TabIndex = 1;
             btn7.Text = "7";
             btn7.UseVisualStyleBackColor = true;
+            btn7.Click += btn7_Click;
             // 
             // btn8
             // 
@@ -82,6 +83,7 @@
             btn8.TabIndex = 2;
             btn8.Text = "8";
             btn8.UseVisualStyleBackColor = true;
+            btn8.Click += btn8_Click;
             // 
             // btn9
             // 
@@ -92,6 +94,7 @@
             btn9.TabIndex = 3;
             btn9.Text = "9";
             btn9.UseVisualStyleBackColor = true;
+            btn9.Click += btn9_Click;
             // 
             // btn6
             // 
@@ -102,6 +105,7 @@
             btn6.TabIndex = 6;
             btn6.Text = "6";
             btn6.UseVisualStyleBackColor = true;
+            btn6.Click += btn6_Click;
             // 
             // btn5
             // 
@@ -112,6 +116,7 @@
             btn5.TabIndex = 5;
             btn5.Text = "5";
             btn5.UseVisualStyleBackColor = true;
+            btn5.Click += btn5_Click;
             // 
             // btn4
             // 
@@ -122,6 +127,7 @@
             btn4.TabIndex = 4;
             btn4.Text = "4";
             btn4.UseVisualStyleBackColor = true;
+            btn4.Click += btn4_Click;
             // 
             // btn3
             // 
@@ -132,6 +138,7 @@
             btn3.TabIndex = 9;
             btn3.Text = "3";
             btn3.UseVisualStyleBackColor = true;
+            btn3.Click += btn3_Click;
             // 
             // btn2
             // 
@@ -142,6 +149,7 @@
             btn2.TabIndex = 8;
             btn2.Text = "2";
             btn2.UseVisualStyleBackColor = true;
+            btn2.Click += btn2_Click;
             // 
             // btn1
             // 
@@ -152,6 +160,7 @@
             btn1.TabIndex = 7;
             btn1.Text = "1";
             btn1.UseVisualStyleBackColor = true;
+            btn1.Click += btn1_Click;
             // 
             // btnDot
             // 
@@ -162,6 +171,7 @@
             btnDot.TabIndex = 12;
             btnDot.Text = ".";
             btnDot.UseVisualStyleBackColor = true;
+            btnDot.Click += btnDot_Click;
             // 
             // btn0
             // 
@@ -172,9 +182,11 @@
             btn0.TabIndex = 10;
             btn0.Text = "0";
             btn0.UseVisualStyleBackColor = true;
+            btn0.Click += btn0_Click;
             // 
             // btnResult
             // 
+            btnResult.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnResult.BackColor = Color.FromArgb(255, 192, 128);
             btnResult.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnResult.Location = new Point(282, 296);
@@ -183,6 +195,7 @@
             btnResult.TabIndex = 16;
             btnResult.Text = "=";
             btnResult.UseVisualStyleBackColor = false;
+            btnResult.Click += btnResult_Click;
             // 
             // btnOpenParenthesis
             // 
@@ -194,6 +207,7 @@
             btnOpenParenthesis.TabIndex = 15;
             btnOpenParenthesis.Text = "(";
             btnOpenParenthesis.UseVisualStyleBackColor = false;
+            btnOpenParenthesis.Click += btnOpenParenthesis_Click;
             // 
             // btnPlus
             // 
@@ -205,6 +219,7 @@
             btnPlus.TabIndex = 14;
             btnPlus.Text = "+";
             btnPlus.UseVisualStyleBackColor = false;
+            btnPlus.Click += btnPlus_Click;
             // 
             // btnDivide
             // 
@@ -216,6 +231,7 @@
             btnDivide.TabIndex = 13;
             btnDivide.Text = "/";
             btnDivide.UseVisualStyleBackColor = false;
+            btnDivide.Click += btnDivide_Click;
             // 
             // btnCloseParenthesis
             // 
@@ -227,6 +243,7 @@
             btnCloseParenthesis.TabIndex = 19;
             btnCloseParenthesis.Text = ")";
             btnCloseParenthesis.UseVisualStyleBackColor = false;
+            btnCloseParenthesis.Click += btnCloseParenthesis_Click;
             // 
             // btnMinus
             // 
@@ -238,6 +255,7 @@
             btnMinus.TabIndex = 18;
             btnMinus.Text = "-";
             btnMinus.UseVisualStyleBackColor = false;
+            btnMinus.Click += btnMinus_Click;
             // 
             // btnMultiply
             // 
@@ -249,9 +267,11 @@
             btnMultiply.TabIndex = 17;
             btnMultiply.Text = "*";
             btnMultiply.UseVisualStyleBackColor = false;
+            btnMultiply.Click += btnMultiply_Click;
             // 
             // btnPow
             // 
+            btnPow.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnPow.BackColor = Color.FromArgb(255, 192, 128);
             btnPow.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnPow.Location = new Point(458, 224);
@@ -260,9 +280,11 @@
             btnPow.TabIndex = 23;
             btnPow.Text = "^";
             btnPow.UseVisualStyleBackColor = false;
+            btnPow.Click += btnPow_Click;
             // 
             // btnClear
             // 
+            btnClear.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnClear.BackColor = Color.FromArgb(255, 192, 128);
             btnClear.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnClear.Location = new Point(458, 152);
@@ -271,9 +293,11 @@
             btnClear.TabIndex = 22;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
+            btnClear.Click += btnClear_Click;
             // 
             // btnDelete
             // 
+            btnDelete.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnDelete.BackColor = Color.FromArgb(255, 192, 128);
             btnDelete.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
             btnDelete.Location = new Point(458, 84);
@@ -282,12 +306,14 @@
             btnDelete.TabIndex = 21;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(613, 450);
+            BackColor = Color.Black;
+            ClientSize = new Size(597, 373);
             Controls.Add(btnPow);
             Controls.Add(btnClear);
             Controls.Add(btnDelete);
@@ -309,7 +335,7 @@
             Controls.Add(btn9);
             Controls.Add(btn8);
             Controls.Add(btn7);
-            Controls.Add(display);
+            Controls.Add(txtDisplay);
             Name = "Form1";
             Text = "Funtions Evaluator";
             ResumeLayout(false);
@@ -318,7 +344,7 @@
 
         #endregion
 
-        private TextBox display;
+        private TextBox txtDisplay;
         private Button btn7;
         private Button btn8;
         private Button btn9;

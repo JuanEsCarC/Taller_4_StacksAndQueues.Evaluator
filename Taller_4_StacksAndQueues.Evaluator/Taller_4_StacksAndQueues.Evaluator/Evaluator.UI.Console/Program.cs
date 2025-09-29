@@ -16,7 +16,6 @@ var infix3 = "144^(1/2)";
 var result3 = ExpressionEvaluator.Evaluate(infix3);
 Console.WriteLine($"{infix3} = {result3}");
 
-//Solucionar que no de error con la siguiente expresion
 var infix4 = "(3.1416+70)/(300^(1/3.2))";
 var result4 = ExpressionEvaluator.Evaluate(infix4);
 Console.WriteLine($"{infix4} = {result4}");

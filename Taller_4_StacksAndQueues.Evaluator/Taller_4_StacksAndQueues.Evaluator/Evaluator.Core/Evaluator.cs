@@ -7,11 +7,7 @@ public class ExpressionEvaluator ()
     public static double Evaluate(string infix)
     {
         var postfixKeys = InfixToPostfix(infix);
-        return Calculate(postfixKeys);
-
-        //Testing purpose
-        //Console.WriteLine(postfixKeys);
-        //return 0;           
+        return Calculate(postfixKeys);         
     }
 
     private static List<string> InfixToPostfix(string infix)
