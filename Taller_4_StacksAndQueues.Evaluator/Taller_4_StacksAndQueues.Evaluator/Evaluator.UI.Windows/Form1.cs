@@ -6,5 +6,8 @@ namespace Evaluator.UI.Windows
         {
             InitializeComponent();
         }
+
+
+
     }
 }
